@@ -1,0 +1,18 @@
+#!/bin/sh
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+DEFAULT='\033[0m'
+LINE_SEPARATOR="\n*********************\n"
+SUCCESS_ANS="no modified files to format"
+
+ANS=$`git-clang-format --diff --style=file`
+
+if [[ "$ANS" == *"no modified files to format"* ]]; then
+      echo "${GREEN} ${LINE_SEPARATOR} Style check pass ${LINE_SEPARATOR}"
+      exit 0
+else
+      echo "${RED} ${LINE_SEPARATOR} Style check doesn't pass ${LINE_SEPARATOR} ${DEFAULT}"
+      git-clang-format --diff --style=file
+      exit 1
+fi
