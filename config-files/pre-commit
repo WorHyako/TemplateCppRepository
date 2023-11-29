@@ -9,7 +9,7 @@ SUCCESS_ANS="no modified files to format"
 ANS=$`git-clang-format --diff --style=file`
 
 if [[ "$ANS" == *"no modified files to format"* ]]; then
-      echo "${GREEN} ${LINE_SEPARATOR} Style check pass ${LINE_SEPARATOR}"
+      echo "${GREEN} ${LINE_SEPARATOR} Style check pass ${LINE_SEPARATOR} ${DEFAULT}"
       exit 0
 else
       echo "${RED} ${LINE_SEPARATOR} Style check doesn't pass ${LINE_SEPARATOR} ${DEFAULT}"
